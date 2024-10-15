@@ -13,6 +13,12 @@ begin
   end;
   var X := Random(lower_bound, upper_bound);
   var Max_Step := min(upper_bound - lower_bound + 1, Max_Steps);
+  var attempt := '';
+  case Max_Step of 
+    1: attempt := 'попытка';
+    2..4: attempt := 'попытки';
+    5..15: attempt := 'попыток';
+  end;
   println($'{newline}Задан диапазон: {lower_bound}..{upper_bound}.');
-  println($'Компьютер загадал число. Попробуйте отгадать его! У вас есть {Max_Step} попыток.');
+  println($'Компьютер загадал число. Попробуйте отгадать его! У вас есть {Max_Step} {attempt}.');
 end.
