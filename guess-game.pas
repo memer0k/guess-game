@@ -28,8 +28,14 @@ begin
     var input_numb := ReadInteger($'Введите число из диапазона {lower_bound}..{upper_bound}:');
     if input_numb = X then 
     begin
+      var step := '';
+      case count_attempts of 
+        1: step := 'шаг';
+        2..4: step := 'шага';
+        5..15: step := 'шагов';
+      end;
       println($'Число отгадано! Это {X}.');
-      println($'Вы угадали число за {count_attempts} шагов.');
+      println($'Вы угадали число за {count_attempts} {step}.');
       exit;
     end
     else 
