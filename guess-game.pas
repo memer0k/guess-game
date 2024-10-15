@@ -20,5 +20,31 @@ begin
     5..15: attempt := 'попыток';
   end;
   println($'{newline}Задан диапазон: {lower_bound}..{upper_bound}.');
-  println($'Компьютер загадал число. Попробуйте отгадать его! У вас есть {Max_Step} {attempt}.');
+  println($'Компьютер загадал число. Попробуйте отгадать его! У вас есть {Max_Step} {attempt}.{newline}');
+  var count_attempts := 1;
+  while count_attempts <= Max_Step do 
+  begin
+    println($'Попытка #{count_attempts}/{Max_Step}.');
+    var input_numb := ReadInteger($'Введите число из диапазона {lower_bound}..{upper_bound}:');
+    if input_numb = X then 
+    begin
+      println($'Число отгадано! Это {X}.');
+      println($'Вы угадали число за {count_attempts} шагов.');
+      exit;
+    end
+    else 
+    if X > input_numb then 
+    begin
+      println($'Загаданное число больше {input_numb}.');
+      lower_bound := input_numb;
+    end
+    else
+    if X < input_numb then 
+    begin
+      println($'Загаданное число меньше {input_numb}.');
+      upper_bound := input_numb;
+    end;
+    count_attempts += 1;
+    println();
+  end;
 end.
