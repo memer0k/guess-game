@@ -8,7 +8,7 @@ begin
   var upper_bound := ReadInteger('Введите верхнюю границу дипазона:');
   while upper_bound < lower_bound do 
   begin
-    println('Ошибка: верхняя граница не может быть меньше нижней.');
+    println($'{newline}Ошибка: верхняя граница не может быть меньше нижней.');
     upper_bound := ReadInteger('Введите верхнюю границу дипазона:');
   end;
   var X := Random(lower_bound, upper_bound);
@@ -26,6 +26,16 @@ begin
   begin
     println($'Попытка #{count_attempts}/{Max_Step}.');
     var input_numb := ReadInteger($'Введите число из диапазона {lower_bound}..{upper_bound}:');
+    if (count_attempts = Max_Step) and (input_numb <> X) then
+    begin
+      println($'Вы проиграли! Исчерпано допустимое количество попыток.{newline}Было загадано число {X}.');
+      exit;
+    end;
+    if (input_numb > upper_bound) or (input_numb < lower_bound) then
+    begin
+      println($'Вы проиграли!{newline}Было загадано число {X}.');
+      exit;
+    end;
     if input_numb = X then 
     begin
       var step := '';
